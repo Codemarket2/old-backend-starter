@@ -1,0 +1,66 @@
+type Query {
+  getDemo: [Book]
+
+  getAllTeams: [Menu]
+  getOneTeam(id: ID!): Menu
+
+  getAllIvdrips: [Menu]
+  getOneIvdrip(id: ID!): Menu
+
+  getAllTherapies: [Menu]
+  getOneTherapie(id: ID!): Menu
+
+  getAllServices: [Menu]
+  getOneService(id: ID!): Menu
+}
+
+type Mutation {
+  createOneTeam(slug: String!, title: String!, description: String!): Menu
+  updateOneTeam(id: ID!, slug: String, title: String, description: String): Menu
+  deleteOneTeam(id: ID!): String
+
+  createOneService(slug: String!, title: String!, description: String!): Menu
+  updateOneService(
+    id: ID!
+    slug: String
+    title: String
+    description: String
+  ): Menu
+  deleteOneService(id: ID!): String
+
+  createOneTherapie(slug: String!, title: String!, description: String!): Menu
+  updateOneTherapie(
+    id: ID!
+    slug: String
+    title: String
+    description: String
+  ): Menu
+  deleteOneTherapie(id: ID!): String
+
+  createOneIvdrip(slug: String!, title: String!, description: String!): Menu
+  updateOneIvdrip(
+    id: ID!
+    slug: String
+    title: String
+    description: String
+  ): Menu
+  deleteOneIvdrip(id: ID!): String
+}
+
+type Menu {
+  _id: ID!
+  slug: String!
+  title: String!
+  description: String!
+}
+
+# Entities
+type Book {
+  id: ID!
+  title: String
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}

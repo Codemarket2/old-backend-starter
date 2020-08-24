@@ -1,0 +1,8 @@
+demo:
+  handler: lambda-functions/demo_lambda/index.handler
+  package:
+    include:
+      - "!**"
+      - lambda-functions/demo_lambda/**
+menu_lambda:
+  handler: lambda-functions/menu_lambda/index.handler
