@@ -6,3 +6,7 @@
   name: menu
   config:
     functionName: menu_lambda
+- type: AWS_LAMBDA
+  name: email
+  config:
+    functionName: email_lambda

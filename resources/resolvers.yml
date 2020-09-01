@@ -107,3 +107,9 @@
   field: deleteOneService
   request: menu/deleteOneService.vtl
   response: response.vtl
+# email
+- dataSource: email
+  type: Mutation
+  field: sendEmail
+  request: request.vtl
+  response: response.vtl

@@ -6,3 +6,5 @@ demo:
       - lambda-functions/demo_lambda/**
 menu_lambda:
   handler: lambda-functions/menu_lambda/index.handler
+email_lambda:
+  handler: lambda-functions/email_lambda/index.handler

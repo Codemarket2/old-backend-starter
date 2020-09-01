@@ -15,6 +15,12 @@ type Query {
 }
 
 type Mutation {
+  sendEmail(
+    userId: String!
+    email: String!
+    subject: String!
+    message: String!
+  ): Email
   createOneTeam(slug: String!, title: String!, description: String!): Menu
   updateOneTeam(id: ID!, slug: String, title: String, description: String): Menu
   deleteOneTeam(id: ID!): String
@@ -45,6 +51,14 @@ type Mutation {
     description: String
   ): Menu
   deleteOneIvdrip(id: ID!): String
+}
+
+type Email {
+  _id: ID!
+  userId: String!
+  email: String!
+  subject: String!
+  message: String!
 }
 
 type Menu {
