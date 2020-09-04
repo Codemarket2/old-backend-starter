@@ -111,5 +111,25 @@
 - dataSource: email
   type: Mutation
   field: sendEmail
-  request: request.vtl
+  request: email/mutation.sendEmail.vtl
+  response: response.vtl
+- dataSource: email
+  type: Query
+  field: getAllEmails
+  request: email/query.getAllEmails.vtl
+  response: response.vtl
+- dataSource: email
+  type: Mutation
+  field: createOneEmail
+  request: email/mutation.createOneEmail.vtl
+  response: response.vtl
+- dataSource: email
+  type: Mutation
+  field: createEmailTemplate
+  request: email/mutation.createEmailTemplate.vtl
+  response: response.vtl
+- dataSource: email
+  type: Mutation
+  field: sendTemplateEmail
+  request: email/mutation.sendTemplateEmail.vtl
   response: response.vtl

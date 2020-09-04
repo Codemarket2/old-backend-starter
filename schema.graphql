@@ -1,5 +1,6 @@
 type Query {
   getDemo: [Book]
+  getAllEmails: [ScrapedEmail]
 
   getAllTeams: [Menu]
   getOneTeam(id: ID!): Menu
@@ -15,9 +16,21 @@ type Query {
 }
 
 type Mutation {
+  createOneEmail(businessName: String, emails: [String]): ScrapedEmail
+  createEmailTemplate(
+    templateName: String
+    body: String
+    subject: String
+  ): String
+  sendTemplateEmail(
+    userId: String!
+    templateName: String!
+    businessName: String!
+    emails: [String]
+  ): TemplateEmail
   sendEmail(
     userId: String!
-    email: String!
+    emails: [String]
     subject: String!
     message: String!
   ): Email
@@ -56,9 +69,23 @@ type Mutation {
 type Email {
   _id: ID!
   userId: String!
-  email: String!
+  emails: [String]
   subject: String!
   message: String!
+}
+
+type TemplateEmail {
+  _id: ID!
+  userId: String!
+  businessName: String!
+  emails: [String]
+  templateName: String!
+}
+
+type ScrapedEmail {
+  _id: ID!
+  businessName: String!
+  emails: [String]
 }
 
 type Menu {
@@ -68,7 +95,6 @@ type Menu {
   description: String!
 }
 
-# Entities
 type Book {
   id: ID!
   title: String

@@ -5,27 +5,27 @@ AWS.config.secretAccessKey = process.env.AWS_SECRET_D;
 AWS.config.region = process.env.AWS_REGION_D;
 
 const html = (message) => {
-    return `<div>${message}</div>`;
+  return `<div>${message}</div>`;
 };
 
 exports.mailer = (data) => {
-    const params = {
-        Destination: {
-            ToAddresses: [data.email],
+  const params = {
+    Destination: {
+      ToAddresses: data.emails,
+    },
+    Message: {
+      Subject: {
+        Charset: "UTF-8",
+        Data: data.subject,
+      },
+      Body: {
+        Html: {
+          Charset: "UTF-8",
+          Data: html(data.message),
         },
-        Message: {
-            Subject: {
-                Charset: "UTF-8",
-                Data: data.subject,
-            },
-            Body: {
-                Html: {
-                    Charset: "UTF-8",
-                    Data: html(data.message),
-                },
-            },
-        },
-        Source: process.env.SENDER_EMAIL,
-    };
-    return (sendPromise = new AWS.SES().sendEmail(params).promise());
+      },
+    },
+    Source: process.env.SENDER_EMAIL,
+  };
+  return (sendPromise = new AWS.SES().sendEmail(params).promise());
 };
